@@ -46,7 +46,25 @@ def solution_05():
     # YOUR CODE HERE
 
     model=tf.keras.models.Sequential([
-        # YOUR CODE HERE, end with a Neuron Dense, activated by sigmoid
+        # The first convolution
+                                    # Input image has 3 bytes color
+                                    tf.keras.layers.Conv2D(16, (3, 3), activation="relu", input_shape=(300, 300, 3)),
+                                    tf.keras.layers.MaxPooling2D(2, 2),
+                                    # The second convolution
+                                    tf.keras.layers.Conv2D(32, (3, 3), activation="relu"),
+                                    tf.keras.layers.MaxPooling2D(2, 2),
+                                    # The third convolution
+                                    tf.keras.layers.Conv2D(64, (3, 3), activation="relu"),
+                                    tf.keras.layers.MaxPooling2D(2, 2),
+                                    # The fourth convolution
+                                    tf.keras.layers.Conv2D(64, (3, 3), activation="relu"),
+                                    tf.keras.layers.MaxPooling2D(2, 2),
+                                    # The fifth convolution
+                                    tf.keras.layers.Conv2D(64, (3, 3), activation="relu"),
+                                    tf.keras.layers.MaxPooling2D(2, 2),
+                                    # Flatten the results to feed in Deep Neural Network
+                                    tf.keras.layers.Flatten(),
+                                    tf.keras.layers.Dense(512, activation="relu"),
 
                 tf.keras.layers.Dense(1, activation='sigmoid') #DO NOT CHANGE THIS LINE!
         ])
